@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Cloud-Hosted Website</title>
+  <meta name="description" content="Contact me. Messages are sent over HTTPS to a serverless Azure Function.">
+  <meta name="theme-color" content="#0f1b2d">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Cloud-Hosted Website, home">
+        <span class="brand-mark" aria-hidden="true">CW</span>
+        Cloud-Hosted Website
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="site-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h1>Send me a message</h1>
+        <p class="lead">Use the form below. Your message goes over HTTPS to an Azure Function and is saved to Azure Table Storage.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container split">
+        <form class="form" id="contact-form" action="/api/contact" method="post" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required maxlength="100">
+            <span class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="254">
+            <span class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="subject">Subject <span class="hint">(optional)</span></label>
+            <input id="subject" name="subject" type="text" maxlength="150">
+            <span class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required minlength="10" maxlength="2000"></textarea>
+            <span class="hint"><span id="char-count">0</span> / 2000 characters</span>
+            <span class="error" aria-live="polite"></span>
+          </div>
+
+          <!-- Honeypot: hidden from people, often filled in by spam bots -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+
+          <div>
+            <button class="btn btn-primary" type="submit" id="submit-btn">Send message</button>
+          </div>
+        </form>
+
+        <aside>
+          <h2 class="section-title aside-title">Other details</h2>
+          <ul class="contact-list">
+            <li><strong>Email</strong><a href="mailto:sgujjar0438@dbu.edu">sgujjar0438@dbu.edu</a></li>
+            <li><strong>Location</strong>Kenya (EAT, UTC+3)</li>
+            <li><strong>Response time</strong>Usually within 2 working days</li>
+            <li><strong>Course</strong>Cloud Computing, Project 2</li>
+          </ul>
+
+          <div class="card mt">
+            <span class="tag">Privacy</span>
+            <h3>What happens to your message</h3>
+            <p>Your name, email and message are stored in a private Azure Storage table that only I can access. Nothing is shared, and the data is deleted when the project resources are removed after the demo.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span data-year>2026</span> Project 2: Cloud-Hosted Website &middot; <a href="mailto:sgujjar0438@dbu.edu">sgujjar0438@dbu.edu</a></p>
+      <p><span class="badge">Hosted on Azure Static Web Apps &middot; HTTPS</span></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#0f1b2d"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#7d8ca3"/>
+    </marker>
+    <style>
+      .t{font-size:17px;font-weight:700;fill:#0f1b2d}
+      .s{font-size:13px;fill:#3b4a60}
+      .l{font-size:12.5px;fill:#0f1b2d;font-weight:600}
+      .h{font-size:13px;font-weight:700;letter-spacing:1.5px;fill:#075a61}
+      .box{fill:#fff;stroke:#0f1b2d;stroke-width:1.6}
+      .az{fill:#eef7f7;stroke:#0a7c86;stroke-width:1.6}
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#f6f4ef"/>
+  <text x="40" y="48" font-size="26" font-weight="700" fill="#0f1b2d">Project 2: Cloud-Hosted Website, architecture</text>
+  <text x="40" y="74" class="s">Microsoft Azure (PaaS + serverless), deployed from GitHub. Solid arrows = request/data flow; grey dashed = telemetry and alerts.</text>
+
+  <!-- Developer / GitHub column -->
+  <rect x="40" y="110" width="270" height="610" rx="16" fill="none" stroke="#c9c4b8" stroke-dasharray="6 5"/>
+  <text x="60" y="138" class="h">DEVELOPMENT</text>
+
+  <rect class="box" x="65" y="160" width="220" height="80" rx="12"/>
+  <text x="85" y="192" class="t">Developer (me)</text>
+  <text x="85" y="214" class="s">VS Code · Git · MFA account</text>
+
+  <rect class="box" x="65" y="300" width="220" height="120" rx="12"/>
+  <text x="85" y="332" class="t">GitHub repository</text>
+  <text x="85" y="356" class="s">feature/* branch → PR</text>
+  <text x="85" y="376" class="s">main branch (protected)</text>
+  <text x="85" y="398" class="s">src/ · api/ · .github/</text>
+
+  <rect class="box" x="65" y="480" width="220" height="110" rx="12"/>
+  <text x="85" y="512" class="t">GitHub Actions</text>
+  <text x="85" y="536" class="s">CI/CD on push to main</text>
+  <text x="85" y="556" class="s">Preview env for each PR</text>
+  <text x="85" y="576" class="s">Deploy token in Secrets</text>
+
+  <line x1="175" y1="240" x2="175" y2="298" stroke="#0f1b2d" stroke-width="1.8" marker-end="url(#a)"/>
+  <text x="185" y="274" class="l">git push</text>
+  <line x1="175" y1="420" x2="175" y2="478" stroke="#0f1b2d" stroke-width="1.8" marker-end="url(#a)"/>
+  <text x="185" y="454" class="l">triggers</text>
+
+  <!-- Azure boundary -->
+  <rect x="350" y="110" width="810" height="610" rx="16" fill="#fbfaf7" stroke="#0a7c86" stroke-width="2"/>
+  <text x="372" y="138" class="h">MICROSOFT AZURE · RESOURCE GROUP rg-project2-website</text>
+
+  <!-- Visitors -->
+  <rect class="box" x="400" y="160" width="230" height="80" rx="12"/>
+  <text x="420" y="192" class="t">Visitors</text>
+  <text x="420" y="214" class="s">Phone · tablet · desktop</text>
+
+  <!-- SWA -->
+  <rect class="az" x="400" y="300" width="330" height="170" rx="12"/>
+  <text x="420" y="332" class="t">Azure Static Web Apps (Free)</text>
+  <text x="420" y="356" class="s">Global edge network / CDN</text>
+  <text x="420" y="376" class="s">Free auto-renewing SSL · HTTPS only</text>
+  <text x="420" y="396" class="s">Security headers (CSP, HSTS)</text>
+  <text x="420" y="420" class="l">Static content:</text>
+  <text x="420" y="440" class="s">Home · About · Services · Contact</text>
+  <text x="420" y="458" class="s">HTML · CSS · JavaScript</text>
+
+  <!-- Functions -->
+  <rect class="az" x="800" y="300" width="320" height="130" rx="12"/>
+  <text x="820" y="332" class="t">Azure Functions (managed API)</text>
+  <text x="820" y="356" class="s">POST /api/contact · Node.js 20</text>
+  <text x="820" y="376" class="s">Validates input · honeypot</text>
+  <text x="820" y="396" class="s">Secrets in app settings, not code</text>
+  <text x="820" y="416" class="s">Runs only when called</text>
+
+  <!-- Storage -->
+  <rect class="az" x="800" y="500" width="320" height="100" rx="12"/>
+  <text x="820" y="532" class="t">Azure Storage: Table</text>
+  <text x="820" y="556" class="s">ContactMessages table</text>
+  <text x="820" y="576" class="s">Private · encrypted at rest</text>
+
+  <!-- Monitoring -->
+  <rect class="az" x="400" y="530" width="330" height="80" rx="12"/>
+  <text x="420" y="560" class="t">Azure Monitor + App Insights</text>
+  <text x="420" y="582" class="s">Requests · failures · response times</text>
+
+  <!-- Governance strip -->
+  <rect class="box" x="400" y="640" width="210" height="60" rx="10"/>
+  <text x="416" y="666" class="l">Cost Management</text>
+  <text x="416" y="686" class="s">Budget $5 · alerts 50/80/100%</text>
+  <rect class="box" x="625" y="640" width="210" height="60" rx="10"/>
+  <text x="641" y="666" class="l">Service Health alerts</text>
+  <text x="641" y="686" class="s">Platform outage notices</text>
+  <rect class="box" x="850" y="640" width="270" height="60" rx="10"/>
+  <text x="866" y="666" class="l">Access: least privilege</text>
+  <text x="866" y="686" class="s">Single owner · MFA · RBAC</text>
+
+  <!-- Flows -->
+  <line x1="515" y1="240" x2="515" y2="298" stroke="#0f1b2d" stroke-width="1.8" marker-end="url(#a)"/>
+  <text x="525" y="274" class="l">HTTPS request</text>
+
+  <path d="M285 535 H340 Q360 535 360 515 V420 Q360 400 380 400 H398" fill="none" stroke="#0f1b2d" stroke-width="1.8" marker-end="url(#a)"/>
+  <rect x="286" y="456" width="62" height="22" rx="4" fill="#f6f4ef"/>
+  <text x="290" y="472" class="l">deploy</text>
+
+  <line x1="730" y1="365" x2="798" y2="365" stroke="#0f1b2d" stroke-width="1.8" marker-end="url(#a)"/>
+  <text x="738" y="355" class="l">/api/*</text>
+
+  <line x1="960" y1="430" x2="960" y2="498" stroke="#0f1b2d" stroke-width="1.8" marker-end="url(#a)"/>
+  <text x="970" y="468" class="l">save message</text>
+
+  <path d="M800 420 Q760 520 732 560" fill="none" stroke="#7d8ca3" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#g)"/>
+  <text x="748" y="500" class="s">logs</text>
+  <line x1="565" y1="470" x2="565" y2="528" stroke="#7d8ca3" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#g)"/>
+  <text x="575" y="504" class="s">metrics</text>
+</svg>

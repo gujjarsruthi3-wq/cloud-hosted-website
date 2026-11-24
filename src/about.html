@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Cloud-Hosted Website</title>
+  <meta name="description" content="About me: background, skills and the goals of this cloud-hosted website project.">
+  <meta name="theme-color" content="#0f1b2d">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Cloud-Hosted Website, home">
+        <span class="brand-mark" aria-hidden="true">CW</span>
+        Cloud-Hosted Website
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="site-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html" aria-current="page">About</a></li>
+          <li><a href="/services.html">Services</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <span class="eyebrow">About</span>
+        <h1>About me and this project</h1>
+        <p class="lead">A student working at the intersection of security, software and cloud infrastructure.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container split">
+        <div class="prose">
+          <h2>Who I am</h2>
+          <p>I'm a computing student based in Kenya. My coursework and personal projects focus on cybersecurity, digital forensics and building practical web applications with Python and JavaScript.</p>
+          <p>I like projects where security is part of the design from the start rather than added at the end. That includes building a forensics lab, writing a malware-detection web app, and deploying sites like this one with least-privilege access and secrets kept out of source code.</p>
+
+          <h2>Why this site exists</h2>
+          <p>This website is Project 2 of my cloud computing course. The goal is a real, public website, and more importantly a working demonstration of the cloud ideas we studied:</p>
+          <ul>
+            <li><strong>Consumption-based pricing (OpEx):</strong> no upfront hardware, only pay-per-use, kept on free tiers.</li>
+            <li><strong>Shared responsibility:</strong> Microsoft runs the datacenters, network and hosts; I own the code, content, accounts and identities.</li>
+            <li><strong>Scalability:</strong> the global edge network absorbs traffic spikes automatically.</li>
+            <li><strong>Monitoring:</strong> Azure Monitor, Application Insights and Service Health alerts.</li>
+          </ul>
+        </div>
+
+        <aside>
+          <h2 class="section-title aside-title">Project timeline</h2>
+          <ol class="timeline">
+            <li><time>Week 1</time><h3>Plan</h3><p>Goals, page sketches, GitHub repo and Azure resource group.</p></li>
+            <li><time>Week 2</time><h3>Build</h3><p>Pages, styling and responsive layout, built and tested locally.</p></li>
+            <li><time>Week 3</time><h3>Deploy</h3><p>Static Web App connected to GitHub; first automated deployment.</p></li>
+            <li><time>Week 4</time><h3>Extend</h3><p>Contact form function, monitoring and a cost budget.</p></li>
+            <li><time>Week 5</time><h3>Test &amp; demo</h3><p>Cross-device and cross-browser testing, fixes, presentation.</p></li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills">
+      <div class="container">
+        <h2 class="section-title" id="skills">Skills and tools</h2>
+        <p class="section-intro">Technologies used in this project and in my other work.</p>
+        <ul class="chips">
+          <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Python</li><li>Flask</li><li>Node.js</li>
+          <li>Microsoft Azure</li><li>Azure Static Web Apps</li><li>Azure Functions</li><li>Azure Storage</li>
+          <li>Application Insights</li><li>GitHub Actions</li><li>Git</li><li>Digital forensics</li><li>Network security</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="shared">
+      <div class="container">
+        <h2 class="section-title" id="shared">Shared responsibility on this site</h2>
+        <p class="section-intro">Azure Static Web Apps is a PaaS offering, so responsibility is split as follows.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Layer</th><th>Responsible</th><th>How it's handled here</th></tr></thead>
+            <tbody>
+              <tr><td>Physical datacenter, network, hosts</td><td class="who-ms">Microsoft</td><td>Azure's global infrastructure</td></tr>
+              <tr><td>Operating system &amp; runtime patching</td><td class="who-ms">Microsoft</td><td>Managed by the PaaS platform</td></tr>
+              <tr><td>TLS certificates</td><td class="who-ms">Microsoft</td><td>Free, auto-renewing SSL</td></tr>
+              <tr><td>Application code &amp; content</td><td class="who-me">Me</td><td>Reviewed in GitHub, deployed by CI/CD</td></tr>
+              <tr><td>Secrets &amp; configuration</td><td class="who-me">Me</td><td>Stored in application settings, never in code</td></tr>
+              <tr><td>Accounts &amp; identities</td><td class="who-me">Me</td><td>MFA, least-privilege access, single owner</td></tr>
+              <tr><td>Data (contact messages)</td><td class="who-me">Me</td><td>Validated input, private storage account</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span data-year>2026</span> Project 2: Cloud-Hosted Website &middot; <a href="mailto:sgujjar0438@dbu.edu">sgujjar0438@dbu.edu</a></p>
+      <p><span class="badge">Hosted on Azure Static Web Apps &middot; HTTPS</span></p>
+    </div>
+  </footer>
+</body>
+</html>

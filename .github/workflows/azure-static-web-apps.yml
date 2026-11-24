@@ -1,0 +1,63 @@
+# Builds and deploys the site to Azure Static Web Apps.
+#  - Push to main            -> production deployment
+#  - Pull request into main  -> temporary preview environment (closed PRs are cleaned up)
+#
+# Required repository secret (Settings -> Secrets and variables -> Actions):
+#   AZURE_STATIC_WEB_APPS_API_TOKEN  = deployment token from the Static Web App's Overview page
+#
+# Azure commits its own workflow file with a secret named
+# AZURE_STATIC_WEB_APPS_API_TOKEN_<random-name>. Keep ONE workflow: either delete
+# Azure's file, or delete this one and edit Azure's file to use the folders below.
+
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build_and_deploy:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and deploy
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          lfs: false
+
+      - name: Check HTML pages exist
+        run: |
+          for page in index about services contact 404; do
+            test -f "src/$page.html" || { echo "Missing src/$page.html"; exit 1; }
+          done
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: "src"
+          api_location: "api"
+          output_location: ""
+          skip_app_build: true
+
+  close_pull_request:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close preview environment
+    steps:
+      - name: Close pull request
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: close
+          app_location: "src"
